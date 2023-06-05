@@ -2,7 +2,6 @@ package setx
 
 import (
 	"fmt"
-	"strings"
 )
 
 type hashSet[T comparable] struct {
@@ -58,11 +57,7 @@ func (s *hashSet[T]) Slice() []T {
 }
 
 func (s *hashSet[T]) String() string {
-	var builder strings.Builder
-	for key := range s.hashMap {
-		builder.WriteString(fmt.Sprintf("%v", key))
-	}
-	return builder.String()
+	return fmt.Sprintf("%v", s.Slice())
 }
 
 func (s *hashSet[T]) Length() int {

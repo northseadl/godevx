@@ -2,7 +2,7 @@ package validators
 
 import (
 	"fmt"
-	"godevx/validatex"
+	"github.com/northseadl/godevx/validatex"
 )
 
 type ArrayValidator[T any] struct {

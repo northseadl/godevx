@@ -18,3 +18,7 @@ func PrintJson(value any) {
 	}
 	debugPrintln("%s", string(jsonBytes))
 }
+
+func Print() {
+
+}
