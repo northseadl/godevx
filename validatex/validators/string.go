@@ -12,6 +12,13 @@ type StringValidator struct {
 	Value string
 }
 
+func NewStringValidator(value string) *StringValidator {
+	return &StringValidator{
+		Validator: new(validatex.Validator),
+		Value:     value,
+	}
+}
+
 func (v *StringValidator) MaxLen(n int) *StringValidator {
 	if v.Error != nil {
 		return v
@@ -73,6 +80,46 @@ func (v *StringValidator) MatchesRegex(regex string) *StringValidator {
 	}
 	if !match {
 		v.Error = fmt.Errorf("%w: regex match failed", ErrRegexCheckFailed)
+	}
+	return v
+}
+
+func (v *StringValidator) IsEmail() *StringValidator {
+	if v.Error != nil {
+		return v
+	}
+	if !regexEmail.MatchString(v.Value) {
+		v.Error = fmt.Errorf("%w: regex match email failed", ErrRegexCheckFailed)
+	}
+	return v
+}
+
+func (v *StringValidator) IsURL() *StringValidator {
+	if v.Error != nil {
+		return v
+	}
+	if !regexURL.MatchString(v.Value) {
+		v.Error = fmt.Errorf("%w: regex match url failed", ErrRegexCheckFailed)
+	}
+	return v
+}
+
+func (v *StringValidator) IsPhone() *StringValidator {
+	if v.Error != nil {
+		return v
+	}
+	if !regexPhoneNumber.MatchString(v.Value) {
+		v.Error = fmt.Errorf("%w: regex match phone failed", ErrRegexCheckFailed)
+	}
+	return v
+}
+
+func (v *StringValidator) IsIP() *StringValidator {
+	if v.Error != nil {
+		return v
+	}
+	if !regexIP.MatchString(v.Value) {
+		v.Error = fmt.Errorf("%w: regex match ip failed", ErrRegexCheckFailed)
 	}
 	return v
 }

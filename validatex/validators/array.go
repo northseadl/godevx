@@ -10,6 +10,13 @@ type ArrayValidator[T any] struct {
 	value []T
 }
 
+func NewArrayValidator[T any](value []T) *ArrayValidator[T] {
+	return &ArrayValidator[T]{
+		Validator: new(validatex.Validator),
+		value:     value,
+	}
+}
+
 func (v *ArrayValidator[T]) MaxLen(n int) *ArrayValidator[T] {
 	if v.Error != nil {
 		return v
@@ -31,5 +38,10 @@ func (v *ArrayValidator[T]) MinLen(n int) *ArrayValidator[T] {
 }
 
 func (v *ArrayValidator[T]) Items(fn func(item T, validator *validatex.Validator)) {
-
+	if v.Error != nil {
+		return
+	}
+	for _, item := range v.value {
+		fn(item, v.Validator)
+	}
 }

@@ -15,4 +15,6 @@ var (
 var (
 	ErrMaxValueCheckFailed = errors.New("maximum Value validation failed")
 	ErrMinValueCheckFailed = errors.New("minimum Value validation failed")
+	ErrInCheckFailed       = errors.New("in validation failed")
+	ErrNotInCheckFailed    = errors.New("not in validation failed")
 )
