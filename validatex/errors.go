@@ -1,4 +1,4 @@
-package validators
+package validatex
 
 import "errors"
 
@@ -13,8 +13,8 @@ var (
 )
 
 var (
-	ErrMaxValueCheckFailed = errors.New("maximum Value validation failed")
-	ErrMinValueCheckFailed = errors.New("minimum Value validation failed")
+	ErrMaxValueCheckFailed = errors.New("maximum value validation failed")
+	ErrMinValueCheckFailed = errors.New("minimum value validation failed")
 	ErrInCheckFailed       = errors.New("in validation failed")
 	ErrNotInCheckFailed    = errors.New("not in validation failed")
 )

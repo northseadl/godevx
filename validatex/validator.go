@@ -1,9 +1,5 @@
 package validatex
 
-import (
-	"github.com/northseadl/godevx/validatex/validators"
-)
-
 type Validator struct {
 	Error error
 }
@@ -12,14 +8,14 @@ func NewValidator() *Validator {
 	return new(Validator)
 }
 
-func (v *Validator) String(value string) *validators.StringValidator {
-	return &validators.StringValidator{
+func (v *Validator) String(value string) *StringValidator {
+	return &StringValidator{
 		Validator: v,
-		Value:     value,
+		value:     value,
 	}
 }
 
-func (v *Validator) Int(value any) *validators.IntValidator {
+func (v *Validator) Int(value any) *IntValidator {
 	var wrapValue int64
 	switch tv := value.(type) {
 	case int8:
@@ -33,15 +29,15 @@ func (v *Validator) Int(value any) *validators.IntValidator {
 	case int64:
 		wrapValue = tv
 	default:
-		v.Error = validators.ErrTypeInvalid
+		v.Error = ErrTypeInvalid
 	}
-	return &validators.IntValidator{
+	return &IntValidator{
 		Validator: v,
 		Value:     wrapValue,
 	}
 }
 
-func (v *Validator) UInt(value any) *validators.UIntValidator {
+func (v *Validator) UInt(value any) *UIntValidator {
 	var wrapValue uint64
 	switch tv := value.(type) {
 	case uint8:
@@ -55,15 +51,15 @@ func (v *Validator) UInt(value any) *validators.UIntValidator {
 	case uint64:
 		wrapValue = tv
 	default:
-		v.Error = validators.ErrTypeInvalid
+		v.Error = ErrTypeInvalid
 	}
-	return &validators.UIntValidator{
+	return &UIntValidator{
 		Validator: v,
-		Value:     wrapValue,
+		value:     wrapValue,
 	}
 }
 
-func (v *Validator) Float(value any) *validators.FloatValidator {
+func (v *Validator) Float(value any) *FloatValidator {
 	var wrapValue float64
 	switch tv := value.(type) {
 	case float32:
@@ -71,10 +67,17 @@ func (v *Validator) Float(value any) *validators.FloatValidator {
 	case float64:
 		wrapValue = tv
 	default:
-		v.Error = validators.ErrTypeInvalid
+		v.Error = ErrTypeInvalid
 	}
-	return &validators.FloatValidator{
+	return &FloatValidator{
 		Validator: v,
 		Value:     wrapValue,
+	}
+}
+
+func (v *Validator) Array(values []any) *ArrayValidator {
+	return &ArrayValidator{
+		Validator: v,
+		value:     values,
 	}
 }

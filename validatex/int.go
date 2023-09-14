@@ -1,18 +1,17 @@
-package validators
+package validatex
 
 import (
 	"fmt"
-	"github.com/northseadl/godevx/validatex"
 )
 
 type IntValidator struct {
-	*validatex.Validator
+	*Validator
 	Value int64
 }
 
 func NewIntValidator(value int64) *IntValidator {
 	return &IntValidator{
-		Validator: new(validatex.Validator),
+		Validator: new(Validator),
 		Value:     value,
 	}
 }
@@ -22,7 +21,7 @@ func (v *IntValidator) Max(maxValue int64) *IntValidator {
 		return v
 	}
 	if v.Value > maxValue {
-		v.Error = fmt.Errorf("%w: maximum Value is %d", ErrMaxValueCheckFailed, maxValue)
+		v.Error = fmt.Errorf("%w: maximum value is %d", ErrMaxValueCheckFailed, maxValue)
 	}
 	return v
 }
@@ -32,7 +31,7 @@ func (v *IntValidator) Min(minValue int64) *IntValidator {
 		return v
 	}
 	if v.Value < minValue {
-		v.Error = fmt.Errorf("%w: minimum Value is %d", ErrMinValueCheckFailed, minValue)
+		v.Error = fmt.Errorf("%w: minimum value is %d", ErrMinValueCheckFailed, minValue)
 	}
 	return v
 }
@@ -46,7 +45,7 @@ func (v *IntValidator) In(values ...int64) *IntValidator {
 			return v
 		}
 	}
-	v.Error = fmt.Errorf("%w: Value must be in %v", ErrInCheckFailed, values)
+	v.Error = fmt.Errorf("%w: value must be in %v", ErrInCheckFailed, values)
 	return v
 }
 

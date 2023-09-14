@@ -1,4 +1,4 @@
-package validators
+package validatex
 
 import "regexp"
 

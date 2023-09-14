@@ -1,18 +1,17 @@
-package validators
+package validatex
 
 import (
 	"fmt"
-	"github.com/northseadl/godevx/validatex"
 )
 
 type FloatValidator struct {
-	*validatex.Validator
+	*Validator
 	Value float64
 }
 
 func NewFloatValidator(value float64) *FloatValidator {
 	return &FloatValidator{
-		Validator: new(validatex.Validator),
+		Validator: new(Validator),
 		Value:     value,
 	}
 }
@@ -22,7 +21,7 @@ func (v *FloatValidator) Max(maxValue float64) *FloatValidator {
 		return v
 	}
 	if v.Value > maxValue {
-		v.Error = fmt.Errorf("%w: maximum Value is %f", ErrMaxValueCheckFailed, maxValue)
+		v.Error = fmt.Errorf("%w: maximum value is %f", ErrMaxValueCheckFailed, maxValue)
 	}
 	return v
 }
@@ -32,7 +31,7 @@ func (v *FloatValidator) Min(minValue float64) *FloatValidator {
 		return v
 	}
 	if v.Value < minValue {
-		v.Error = fmt.Errorf("%w: minimum Value is %f", ErrMinValueCheckFailed, minValue)
+		v.Error = fmt.Errorf("%w: minimum value is %f", ErrMinValueCheckFailed, minValue)
 	}
 	return v
 }
