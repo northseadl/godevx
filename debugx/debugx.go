@@ -11,6 +11,10 @@ func debugPrintln(format string, values ...any) {
 	fmt.Printf(debugOutputPrefix+format+"\r\n", values...)
 }
 
+func debugPrintf(format string, values ...any) {
+	fmt.Printf(debugOutputPrefix+format, values...)
+}
+
 // PrintJson prints the given value as JSON.
 //
 //	将给定的值打印为 JSON。
@@ -36,6 +40,13 @@ func PrintJsonPretty(value any) {
 // Println prints the given value.
 //
 //	将给定的值打印出来。
-func Println(value any) {
-	debugPrintln("%v", value)
+func Println(values ...interface{}) {
+	debugPrintln("%v", values...)
+}
+
+// Printf prints the given value with format.
+//
+//	将给定的值按格式打印出来。
+func Printf(format string, values ...interface{}) {
+	debugPrintf(format, values...)
 }
