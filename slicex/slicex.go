@@ -83,9 +83,12 @@ func Difference[T comparable](s1, s2 []T) []T {
 		set[item] = struct{}{}
 	}
 	for _, item := range s2 {
-		if _, ok := set[item]; !ok {
-			result = append(result, item)
+		if _, ok := set[item]; ok {
+			delete(set, item)
 		}
+	}
+	for item := range set {
+		result = append(result, item)
 	}
 	return result
 }
