@@ -1,7 +1,7 @@
 package mergex
 
 import (
-	"godevx/debugx"
+	"github.com/northseadl/godevx/debugx"
 	"testing"
 )
 
