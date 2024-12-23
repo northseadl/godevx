@@ -13,11 +13,9 @@ type RestError struct {
 
 func (e *RestError) Error() string {
 	if e.cause != nil {
-		return fmt.Sprintf("code: %d, reason: %s, message: %s, cause: %v",
-			e.Code, e.Reason, e.Message, e.cause)
+		return fmt.Sprintf("%s[%d]: %s, cause by: %v", e.Reason, e.Code, e.Message, e.cause)
 	}
-	return fmt.Sprintf("code: %d, reason: %s, message: %s",
-		e.Code, e.Reason, e.Message)
+	return fmt.Sprintf("%s[%d]: %s", e.Reason, e.Code, e.Message)
 }
 
 func (e *RestError) Unwrap() error {
