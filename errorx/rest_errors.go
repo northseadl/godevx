@@ -21,67 +21,67 @@ var (
 	ErrBadRequest = New(
 		CodeBadRequest,
 		"BAD_REQUEST",
-		"Invalid request parameters",
+		"invalid request parameters",
 	)
 
 	ErrUnauthorized = New(
 		CodeUnauthorized,
 		"UNAUTHORIZED",
-		"Authentication required",
+		"authentication required",
 	)
 
 	ErrForbidden = New(
 		CodeForbidden,
 		"FORBIDDEN",
-		"Permission denied",
+		"permission denied",
 	)
 
 	ErrNotFound = New(
 		CodeNotFound,
 		"NOT_FOUND",
-		"Resource not found",
+		"resource not found",
 	)
 
 	ErrMethodNotAllowed = New(
 		CodeMethodNotAllowed,
 		"METHOD_NOT_ALLOWED",
-		"HTTP method not allowed",
+		"http method not allowed",
 	)
 
 	ErrConflict = New(
 		CodeConflict,
 		"CONFLICT",
-		"Resource conflict",
+		"resource conflict",
 	)
 
 	ErrTooManyRequests = New(
 		CodeTooManyRequests,
 		"TOO_MANY_REQUESTS",
-		"Rate limit exceeded",
+		"rate limit exceeded",
 	)
 
 	ErrInternalServer = New(
 		CodeInternalError,
 		"INTERNAL_SERVER_ERROR",
-		"Internal server error",
+		"internal server error",
 	)
 
 	ErrNotImplemented = New(
 		CodeNotImplemented,
 		"NOT_IMPLEMENTED",
-		"Feature not implemented",
+		"feature not implemented",
 	)
 
 	ErrBadGateway = New(
 		CodeBadGateway,
 		"BAD_GATEWAY",
-		"Bad gateway",
+		"bad gateway",
 	)
 
 	ErrServiceUnavailable = New(
 		CodeServiceUnavailable,
 		"SERVICE_UNAVAILABLE",
-		"Service temporarily unavailable",
+		"service temporarily unavailable",
 	)
 )
 
