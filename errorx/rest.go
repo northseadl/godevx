@@ -18,6 +18,21 @@ func (e *RestError) Error() string {
 	return fmt.Sprintf("%s[%d]: %s", e.Reason, e.Code, e.Message)
 }
 
+func (e *RestError) SetCode(code int) *RestError {
+	e.Code = code
+	return e
+}
+
+func (e *RestError) SetReason(reason string) *RestError {
+	e.Reason = reason
+	return e
+}
+
+func (e *RestError) SetMessage(message string) *RestError {
+	e.Message = message
+	return e
+}
+
 func (e *RestError) Unwrap() error {
 	return e.cause
 }
